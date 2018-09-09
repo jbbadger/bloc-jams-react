@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Route, Link } from 'react-router-dom';
 import albumData from './../data/albums';
 
 
@@ -66,7 +65,7 @@ class Album extends Component {
           <tbody>
             { this.state.album.songs.map( (song, index) =>
                 <tr className="song" key={index} onClick={() => this.handleSongClick(song)} >
-                  <td>Track #{index}</td>
+                  <td>Track #{index + 1}</td>
                   <td>{song.title}</td>
                   <td>{song.duration} seconds</td>
                 </tr>
