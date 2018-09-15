@@ -13,7 +13,9 @@ class Album extends Component {
     this.state = {
       album: album,
       currentSong: album.songs[0],
-      isPlaying: false
+      hoveredSong: album.songs[0],
+      isPlaying: false,
+      isHover: false
     };
 
     this.audioElement = document.createElement('audio');
@@ -45,22 +47,23 @@ class Album extends Component {
     }
   }
 
-  handleMouseEnter(song){
+  handleSongHover(song){
+    this.setState({isHover: true});
     this.setState({hoveredSong: song});
-    console.log('The hovered song is ');
-    console.log(this.state.hoveredSong);
   }
 
-  handleMouseLeave(){
-    this.setState({hoveredSong: null});
+  handleSongLeave(){
+    this.setState({isHover: false});
   }
 
-  determineIcon(song){
-    if(this.state.hoveredSong === song && this.state.currentSong === song && this.state.isPlaying === true){
-      return <span className='ion-md-pause'></span>
-    } else if(this.state.isPlaying === false && this.state.hoveredSong === song){
-      return <span className='ion-md-play-circle'></span>
-    }
+  produceHoverEffect(song, index){
+    if(!this.state.isPlaying && this.state.isHover && this.state.hoveredSong === song)
+      {return <td><span className="ion-md-play-circle"></span></td>}
+    else if (this.state.isPlaying && !this.state.isHover && this.state.currentSong === song)
+      {return <td><span className="ion-md-pause"></span></td>}
+    else if (this.state.isPlaying && this.state.isHover && this.state.currentSong === song)
+      {return <td><span className="ion-md-pause"></span></td>}
+    else {return <td id="song-number">{index+1}</td>}
   }
   render() {
     return (
@@ -81,11 +84,10 @@ class Album extends Component {
           </colgroup>
           <tbody>
             { this.state.album.songs.map( (song, index) =>
-                <tr className="song" key={index} onMouseEnter={() => this.handleMouseEnter(song)} onMouseLeave={() => this.handleMouseLeave()} onClick={() => this.handleSongClick(song)}>
-                  <td>Title: {song.title}</td>
-                  <td>{this.determineIcon(song)}</td>
-                  <td>Track: {index + 1}</td>
-                  <td>Duration: {song.duration} secs</td>
+                <tr className="song" key={index} onClick={ () => this.handleSongClick(song)}>
+                  <td id="song-number"  onMouseEnter={() => this.handleSongHover(song)} onMouseLeave={() => this.handleSongLeave(song)}>Track:<span>{this.produceHoverEffect(song, index)}</span></td>
+                  <td id="song-title">{song.title}</td>
+							    <td id="song-duration">{song.duration} secs</td>
                 </tr>
             )
           }
