@@ -2,27 +2,142 @@
   text-align: center;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+.title {
+  color: pink;
+  width: 50%;
+  margin-left: 15%;
+  margin-top: 3%;
+  margin-bottom: 3%;
+  padding-top: 1%;
+  padding-bottom: 1%;
+  background-color: grey;
+  border: 5px solid red;
+  text-align: center;
+  font-family: cursive;
+  font-style: oblique;
+  font-size: 325%;
+  text-shadow: -5px -5px 0 #000, -5px -5px 0 #000, -5px -5px 0 #000, -5px -5px 0 #000;
 }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
+.navBar {
+  float: right;
+  margin-right: 11%;
+  width: 20%;
+  border: 5px solid blue;
+  margin-top: 0%;
+  padding-top: 2%;
+  padding-bottom: 0.6%;
+  background-color: white;
+  text-align: center;
 }
 
-.App-title {
-  font-size: 1.5em;
+.landing {
+  padding-top: 0%;
+  padding-left: 2%;
+  padding-right: 2%;
+  width: 70%;
+  margin-top: 0%;
+  margin-left: 15%;
+  margin-right: 15%;
+  background-color: #d1ffff;
+  text-align: left;
+  color: #D290D4;
+  border: 3px solid purple
 }
 
-.App-intro {
-  font-size: large;
+.library {
+  width: 70%;
+  margin-top: 0%;
+  margin-left: 15%;
+  margin-right: 15%;
+  background-color: pink;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.albumImg {
+  width: 25%;
+  float: left;
+  margin-right: 1%;
+  margin-left: 3%;
+}
+
+.albTitle {
+  float: left;
+  margin-right: 5%;
+  background-color: pink;
+  font-size: 1.5vw;
+}
+
+.albTitle2 {
+  float: left;
+  padding-top: 2%;
+  padding-bottom: 10%;
+}
+
+.albSongs {
+  float: left;
+  padding-top: 10%;
+}
+
+.album {
+  background-color: white;
+  margin-left: 15%;
+  margin-right: 15%;
+  width: 70%;
+}
+
+.albCover {
+  width: 55%;
+  float: left;
+}
+
+
+
+.albTitle3 {
+  width: 45%;
+  float: left;
+  text-align: left;
+  background-color: pink;
+  font-size: 4vw;
+  margin-bottom: 2%;
+  margin-top: 1%;
+}
+
+.artist {
+  width: 45%;
+  margin-top: 0%;
+  margin-bottom: 2%;
+  float: left;
+  text-align: left;
+  background-color: red;
+  font-size: 2.5vw;
+}
+
+.release {
+  width: 45%;
+  margin-top: 0%;
+  float: left;
+  text-align: left;
+  background-color: pink;
+  font-size: 1.5vw;
+}
+
+#song-list {
+  color: pink;
+  font-size: 2.5vw;
+  text-align: left;
+  background-color: grey;
+  width: 45%;
+  margin-bottom: 0%;
+}
+
+#song-title {
+  padding-left: 0%;
+  padding-right: -1%;
+  text-align: left;
+}
+
+.playBar {
+  background-color: pink;
+  padding-top: 8.5%;
+  color: cyan;
 }

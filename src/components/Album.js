@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import '../App.css';
 import albumData from './../data/albums';
 import PlayerBar from './PlayerBar';
 
@@ -135,20 +136,22 @@ class Album extends Component {
   }
 
   formatTime(time){
+    if (isNaN(time)){
+      return "-:--"};
     const min = parseInt(time/60);
     const sec = Math.round(time%60);
     return ((sec<10) ? `${min}:0${sec}` : `${min}:${sec}`);
   }
-  
+
   render() {
     return (
       <section className="album">
         <section id="album-info">
-          <img id="album-cover-art" src={this.state.album.albumCover} alt={this.state.album.title}/>
+          <img className="albCover" id="album-cover-art" src={this.state.album.albumCover} alt={this.state.album.title}/>
           <div className="album-details">
-            <h1 id="album-title">{this.state.album.title}</h1>
-            <h2 className="artist">{this.state.album.artist}</h2>
-            <div id="release=info">{this.state.album.releaseInfo}</div>
+            <p className="albTitle3" id="album-title">{this.state.album.title}</p>
+            <p className="artist">by {this.state.album.artist}</p>
+            <p className="release">{this.state.album.releaseInfo}</p>
           </div>
         </section>
         <table id="song-list">
@@ -160,7 +163,7 @@ class Album extends Component {
           <tbody>
             { this.state.album.songs.map( (song, index) =>
                 <tr className="song" key={index} onClick={ () => this.handleSongClick(song)}>
-                  <td id="song-number"  onMouseEnter={() => this.handleSongHover(song)} onMouseLeave={() => this.handleSongLeave(song)}>Track:<span>{this.produceHoverEffect(song, index)}</span></td>
+                  <td id="song-number"  onMouseEnter={() => this.handleSongHover(song)} onMouseLeave={() => this.handleSongLeave(song)}><span>Track {this.produceHoverEffect(song, index)}:</span></td>
                   <td id="song-title">{song.title}</td>
 							    <td id="song-duration">{this.formatTime(song.duration)}</td>
                 </tr>
@@ -168,6 +171,7 @@ class Album extends Component {
           }
           </tbody>
         </table>
+        <div className="playBar">
         <PlayerBar
           isPlaying={this.state.isPlaying}
           currentSong={this.state.currentSong}
@@ -182,6 +186,7 @@ class Album extends Component {
           handleVolumeDown={(e) => this.volumeDown(e)}
           formatTime = {(time) => this.formatTime(time)}
           />
+        </div>
       </section>
     );
   }
